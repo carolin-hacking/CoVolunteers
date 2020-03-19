@@ -1,11 +1,12 @@
 import axios from 'axios';
 import { createMessage, returnErrors } from './messages'
+import { tokenConfig } from './auth'
 
 import { GET_HELPERS, DELETE_HELPER, ADD_HELPER } from './types';
 
 // GET HELPERS
-export const getHelpers = () => dispatch => {
-    axios.get('/api/helpers/')
+export const getHelpers = () => (dispatch, getState) => {
+    axios.get('/api/helpers/', tokenConfig(getState))
     .then(res => {
         dispatch({
             type: GET_HELPERS,
@@ -15,8 +16,8 @@ export const getHelpers = () => dispatch => {
 };
 
 // DELETE HELPER
-export const deleteHelper = (id) => dispatch => {
-    axios.delete(`/api/helpers/${id}/`)
+export const deleteHelper = (id) => (dispatch, getState) => {
+    axios.delete(`/api/helpers/${id}/`, tokenConfig(getState))
     .then(res => {
         dispatch(createMessage({ helperDeleted: 'Helper deleted!' }))
         dispatch({
@@ -27,8 +28,8 @@ export const deleteHelper = (id) => dispatch => {
 };
 
 // ADD HELPER
-export const addHelper = (helper) => dispatch => {
-    axios.post("/api/helpers/", helper)
+export const addHelper = (helper) => (dispatch, getState) => {
+    axios.post("/api/helpers/", helper, tokenConfig(getState))
     .then(res => {
         dispatch(createMessage({ helperAdded: 'Helper added!' }))
         dispatch({
