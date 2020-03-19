@@ -17,11 +17,14 @@ export class Alerts extends Component {
             if(error.msg.surname) alert.error(`Surname: ${error.msg.surname.join()}`);
             if(error.msg.email) alert.error(`Email: ${error.msg.email.join()}`);
             if(error.msg.zipcode) alert.error(`Zip Code: ${error.msg.zipcode.join()}`);
+            if(error.msg.non_field_errors) alert.error(error.msg.non_field_errors.join());
+            if(error.msg.username) alert.error(error.msg.username.join());   
         }
 
         if(message !== prevProps.message) {
             if(message.helperDeleted) alert.success(message.helperDeleted);
             if(message.helperAdded) alert.success(message.helperAdded);
+            if(message.passwordNotMatch) alert.error(message.passwordNotMatch);
         }
     }
 
