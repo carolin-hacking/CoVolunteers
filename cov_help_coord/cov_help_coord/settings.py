@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'knox',
     'accounts',
+    'institutions'
 ]
 
 REST_FRAMEWORK = {

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { register } from '../../actions/auth';
 import { createMessage } from '../../actions/messages'
 
-export class Register extends Component {
+export class RegisterCompany extends Component {
     state = {
         username: '',
         email: '',
@@ -104,4 +104,4 @@ const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 })
 
-export default connect(mapStateToProps, { register, createMessage })(Register);
+export default connect(mapStateToProps, { register, createMessage })(RegisterCompany);

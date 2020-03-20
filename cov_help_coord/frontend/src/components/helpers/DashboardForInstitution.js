@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react'
-import Form from './Form'
 import Helpers from './Helpers'
+import { FormInstitution } from './FormInstitution'
 
-export default function Dashboard() {
+export default function DashboardForInstitution() {
     return (
         <Fragment>
-            <Form />
+            <FormInstitution />
             <Helpers />
         </Fragment>
     )
