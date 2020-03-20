@@ -6,10 +6,12 @@ import { Provider as AlertProvider } from 'react-alert';
 import AlertTemplate from 'react-alert-template-basic';
 
 import Header from './layout/Header'
-import Dashboard from './helpers/Dashboard'
+import DashboardForInstitution from './helpers/DashboardForInstitution'
+import DashboardForHelpers from './helpers/DahsboardForHelpers'
+
 import Alerts from './layout/Alerts'
 import Login from './accounts/Login'
-import Register from './accounts/Register'
+import RegisterCompany from './accounts/RegisterCompany'
 import PrivateRoute from './common/PrivateRoute'
 
 import { Provider } from 'react-redux';
@@ -38,8 +40,14 @@ class App extends Component {
                             <Alerts />
                             <div className="container">
                                 <Switch>
-                                    <PrivateRoute exact path="/" component={Dashboard} />
-                                    <Route exact path="/register" component={Register} />
+                                
+                                    
+                                <Route exact path="/fuerhelfer" component={DashboardForHelpers} />
+                                <PrivateRoute exact path="/fuereinrichtungen" component={DashboardForInstitution} />
+                                   
+                                    
+                                     
+                                    <Route exact path="/register" component={RegisterCompany} />
                                     <Route exact path="/login" component={Login} />
                                 </Switch>
                             </div>               

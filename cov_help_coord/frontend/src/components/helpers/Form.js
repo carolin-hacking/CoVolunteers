@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addHelper } from '../../actions/helpers'
+import { getInstitutions, deleteInstitution, addInstitution } from '../../actions/institutions';
+
 
 export class Form extends Component {
     state = {
@@ -12,7 +14,8 @@ export class Form extends Component {
     }
 
     static propTypes = {
-        addHelper: PropTypes.func.isRequired
+        addHelper: PropTypes.func.isRequired,
+        addInstitution: PropTypes.func.isRequired
     };
 
     onChange = e => this.setState({ [e.target.name]: e.target.value });
@@ -36,7 +39,7 @@ export class Form extends Component {
         return (
             <div>
                 <div className="card card-body mt-4 mb-4">
-                    <h2>Add Helper</h2>
+                    <h2>Deine Informationen</h2>
                     <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label>Name</label>
@@ -90,4 +93,4 @@ export class Form extends Component {
     }
 }
 
-export default connect(null, { addHelper })(Form)
+export default connect(null, { addHelper, addInstitution })(Form)

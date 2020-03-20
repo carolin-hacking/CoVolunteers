@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { Link } from "react-router-dom"
+import { Link, Redirect } from "react-router-dom"
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
-import { logout } from '../../actions/auth'
+import { logout } from '../../actions/auth';
+
 
 
 export class Header extends Component {
@@ -56,8 +57,14 @@ export class Header extends Component {
               </button>
               <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
                 <a className="navbar-brand" href="#">
-                  Lead Manager
+                  Finde Dein Engagement oder Job!
                 </a>
+                <li class="nav-item">
+                    <Link to='/fuerhelfer'>Für Helfer</Link>
+                </li>
+                <li class="nav-item">
+                    <Link to='/fuereinrichtungen'>Für Einrichtungen</Link>
+                </li>
               </div>
               {isAuthenticated ? authLinks : guestLinks}
             </div>
