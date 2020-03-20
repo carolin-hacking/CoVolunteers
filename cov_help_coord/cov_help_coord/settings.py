@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'helpers',
     'rest_framework',
     'frontend',
-    'whitenoise.runserver_nostatic',
     'knox',
     'accounts',
     'institutions'
