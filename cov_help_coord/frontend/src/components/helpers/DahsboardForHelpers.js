@@ -1,12 +1,18 @@
-import React, { Fragment } from 'react'
-import Form from '../helpers/Form'
-import Institutions from '../helpers/Institutions'
+import React, { Component, Fragment } from 'react'
+import Form from './Form'
+import Institutions from './Institutions'
+import { connect } from 'react-redux';
 
-export default function DashboardForHelpers() {
-    return (
+
+export class DahsboardForHelpers extends Component {
+    render() {
+        return (
         <Fragment>
             <Form />
             <Institutions />
         </Fragment>
-    )
+        )
+    }
 }
+
+export default connect()(DahsboardForHelpers)

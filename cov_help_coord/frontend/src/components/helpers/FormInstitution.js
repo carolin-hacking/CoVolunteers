@@ -1,15 +1,18 @@
+import { addInstitution } from '../../actions/institutions';
 import React, { Component } from 'react';
+import Select from 'react-select'
+
+
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { addHelper } from '../../actions/helpers'
-import { getInstitutions, deleteInstitution, addInstitution } from '../../actions/institutions';
 
 
 export class FormInstitution extends Component {
+        
+    
     static propTypes = {
         addInstitution: PropTypes.func.isRequired,
-        addHelper:  PropTypes.func.isRequired
-    };  
+        }; 
     
     state = {
         companyname: '',
@@ -18,10 +21,16 @@ export class FormInstitution extends Component {
         companytype: '',
         title: '',
         description: '',
+        showcompany: ''
     }
     
 
     onChange = e => this.setState({ [e.target.name]: e.target.value });
+
+    handleChange = (selectedOption) => {
+        this.setState({ companytype: selectedOption.value, showcompany: selectedOption.label });
+        console.log(`Option selected:`, selectedOption);
+      }
 
     onSubmit = e => {
         e.preventDefault();
@@ -32,7 +41,13 @@ export class FormInstitution extends Component {
     }
 
     render() {
-        const {companyname, ansprechpartner, zipcode, companytype, title, description} = this.state;
+        const {companyname, ansprechpartner, zipcode, companytype, title, description, showcompany} = this.state;
+        const options = [
+            {value: 'HOS', label: 'Krankenhaus/Niedergelassene ÄrtzInnen'},
+            {value: 'FAR', label: 'Landwirt'},
+            {value: 'SUP', label: 'Supermarkt'},
+            {value: 'CAR', label: 'Pflegedienst'}
+        ]
         return (
             <div>
                 <div className="card card-body mt-4 mb-4">
@@ -60,13 +75,12 @@ export class FormInstitution extends Component {
                     </div>
                     <div className="form-group">
                         <label>Art der Einrichtung</label>
-                        <select className="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                            <option selected>Choose...</option>
-                            <option value={companytype}>Krankenhaus/Niedergelassene ÄrtzInnen</option>
-                            <option value={companytype}>Landwirt</option>
-                            <option value={companytype}>Supermarkt</option>
-                            <option value={companytype}>Pflegedienst</option>
-                        </select>
+                        <Select 
+                        name="companytype"
+                        value={this.state.showcompany}
+                        options={options}                        
+                        onChange={this.handleChange}
+                        />
                     </div>
                     <div className="form-group">
                         <label>Postleitzahl</label>
@@ -111,4 +125,9 @@ export class FormInstitution extends Component {
     }
 }
 
-export default connect(null, { addInstitution })(FormInstitution)
+
+const mapStateToProps = state => ({
+    institutions: state.institutions.institutions
+});
+
+export default connect(mapStateToProps, { addInstitution})(FormInstitution)

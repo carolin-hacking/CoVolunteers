@@ -1,14 +1,13 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getInstitutions, deleteInstitution, addInstitution } from '../../actions/institutions';
+import { getInstitutions, deleteInstitution } from '../../actions/institutions';
 
 export class Institutions extends Component {
     static propTypes = {
         institutions: PropTypes.array.isRequired,
         getInstitutions: PropTypes.func.isRequired,
-        deleteInstitution: PropTypes.func.isRequired,
-        addInstitution: PropTypes.func.isRequired
+        deleteInstitution: PropTypes.func.isRequired
     };
 
     componentDidMount() {
@@ -51,4 +50,4 @@ const mapStateToProps = state => ({
     institutions: state.institutions.institutions
 });
 
-export default connect(mapStateToProps, { getInstitutions, deleteInstitution, addInstitution })(Institutions);
+export default connect(mapStateToProps, { getInstitutions, deleteInstitution })(Institutions);

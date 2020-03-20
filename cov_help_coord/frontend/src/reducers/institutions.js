@@ -6,6 +6,12 @@ const initialState = {
 
 export default function(state = initialState, action) {
     switch(action.type) {
+        case ADD_INSTITUTION:
+            return {
+                ...state,
+                institutions: [...state.institutions, action.payload]
+            };
+        
         case GET_INSTITUTIONS:
             return {
                 ...state,
@@ -15,11 +21,6 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 institutions: state.institutions.filter(institution => institution.id !== action.payload)
-            };
-        case ADD_INSTITUTION:
-            return {
-                ...state,
-                institutions: [...state.institutions, action.payload]
             };
         default: 
             return state;

@@ -10,5 +10,5 @@ class InstitutionViewSet(viewsets.ModelViewSet):
     queryset = Institution.objects.all()
 
     # the company user owns this company 'inserat'
-    def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+    #def perform_create(self, serializer):
+     #   serializer.save(owner=self.request.user)

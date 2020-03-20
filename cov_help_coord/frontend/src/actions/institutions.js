@@ -30,12 +30,12 @@ export const deleteInstitution = (id) => (dispatch, getState) => {
 
 // ADD INSTITUTION
 export const addInstitution = (institution) => (dispatch, getState) => {
+    console.log('add institution')
     axios.post("/api/institutions/", institution, tokenConfig(getState))
     .then(res => {
         dispatch({
-            type: ADD_HELPER,
+            type: ADD_INSTITUTION,
             payload: res.data
         })
     }).catch(err => console.log(err))
 }
-
