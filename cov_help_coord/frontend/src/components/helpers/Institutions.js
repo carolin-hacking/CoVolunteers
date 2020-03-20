@@ -38,7 +38,7 @@ export class Institutions extends Component {
                                 <td>{institution.companytype}</td>
                                 <td>{institution.title}</td>
                                 <td>{institution.description}</td>
-                                <td><button onClick={this.props.deleteInstitution.bind(this, institution.id)} className="btn btn-danger btn-sm">Delete</button></td>
+                                <td><button className="btn btn-success btn-sm">Anmelden</button></td>
                             </tr>
                         )) }
                     </tbody>
