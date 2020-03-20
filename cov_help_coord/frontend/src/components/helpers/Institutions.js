@@ -13,29 +13,31 @@ export class Institutions extends Component {
     componentDidMount() {
         this.props.getInstitutions();
     }
-
+//{ companyname, ansprechpartner, zipcode, companytype, title, description 
     render() {
         return (
             <Fragment>
-                <h2>institutions</h2>
+                <h2>Einrichtungen</h2>
                 <table className="table table-striped">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Surname</th>
-                            <th>Zip Code</th>
-                            <th>Mail Address</th>
+                            <th>Einrichtung</th>
+                            <th>Ansprechpartner</th>
+                            <th>PLZ</th>
+                            <th>Einrichtungsart</th>
+                            <th>Sucht</th>
+                            <th>Beschreibung</th>
                         </tr>
                     </thead>
                     <tbody>
                         { this.props.institutions.map(institution => (
                             <tr key={institution.id}>
-                                <td>{institution.id}</td>
-                                <td>{institution.name}</td>
-                                <td>{institution.surname}</td> 
-                                <td>{institution.zipcode}</td>
-                                <td>{institution.email}</td>
+                                <td>{institution.companyname}</td>
+                                <td>{institution.ansprechpartner}</td>
+                                <td>{institution.zipcode}</td> 
+                                <td>{institution.companytype}</td>
+                                <td>{institution.title}</td>
+                                <td>{institution.description}</td>
                                 <td><button onClick={this.props.deleteInstitution.bind(this, institution.id)} className="btn btn-danger btn-sm">Delete</button></td>
                             </tr>
                         )) }

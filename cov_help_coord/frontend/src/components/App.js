@@ -42,8 +42,8 @@ class App extends Component {
                                 <Switch>
                                 
                                     
-                                <PrivateRoute exact path="/" component={DashboardForInstitution} />
-                                <PrivateRoute exact path="/" component={DashboardForHelpers} />
+                                <Route exact path="/fuerhelfer" component={DashboardForHelpers} />
+                                <PrivateRoute exact path="/fuereinrichtungen" component={DashboardForInstitution} />
                                    
                                     
                                      
