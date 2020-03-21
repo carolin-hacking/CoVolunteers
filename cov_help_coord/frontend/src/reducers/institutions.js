@@ -1,7 +1,8 @@
-import { GET_INSTITUTIONS, DELETE_INSTITUTION, ADD_INSTITUTION } from '../actions/types.js'
+import { GET_INSTITUTIONS, DELETE_INSTITUTION, ADD_INSTITUTION, ADD_HELPER_TO_INST } from '../actions/types.js'
 
 const initialState = {
-    institutions: []
+    institutions: [], 
+    institutionID: ''
 }
 
 export default function(state = initialState, action) {
@@ -20,8 +21,13 @@ export default function(state = initialState, action) {
         case DELETE_INSTITUTION:
             return {
                 ...state,
-                institutions: state.institutions.filter(institution => institution.id !== action.payload)
+                institutions: state.institutions
             };
+        case ADD_HELPER_TO_INST:
+            return {
+                ...state,
+                institutions: [...state.institutions.filter(institution => institution.id !== action.payload.id), action.payload]
+            }
         default: 
             return state;
     }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addHelper } from '../../actions/helpers'
-import { getInstitutions, deleteInstitution, addInstitution } from '../../actions/institutions';
+import { getInstitutions, deleteInstitution, addInstitution, addHelperToInstitution } from '../../actions/institutions';
 
 
 export class Form extends Component {
@@ -24,7 +24,8 @@ export class Form extends Component {
         e.preventDefault();
         const { name, surname, email, zipcode } = this.state;
         const helper = { name, surname, email, zipcode };
-        this.props.addHelper(helper);
+        this.props.addHelper(helper);        
+        this.props.addHelperToInstitution(this.props.id, helper.email)
         this.setState({
             name: '',
             surname: '',
@@ -93,4 +94,8 @@ export class Form extends Component {
     }
 }
 
-export default connect(null, { addHelper, addInstitution })(Form)
+const mapStateToProps = state => ({
+    institutionID: state.institutions.institutionID
+})
+
+export default connect(mapStateToProps, { addHelper, addInstitution, addHelperToInstitution })(Form)

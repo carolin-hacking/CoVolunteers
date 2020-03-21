@@ -7,7 +7,7 @@ import { GET_INSTITUTIONS, DELETE_INSTITUTION, ADD_INSTITUTION, ADD_HELPER } fro
 
 // GET Institutions
 export const getInstitutions = () => (dispatch, getState) => {
-    axios.get('/api/institutions/', tokenConfig(getState))
+    axios.get('/api/institutions', tokenConfig(getState))
     .then(res => {
         dispatch({
             type: GET_INSTITUTIONS,
@@ -35,6 +35,17 @@ export const addInstitution = (institution) => (dispatch, getState) => {
     .then(res => {
         dispatch({
             type: ADD_INSTITUTION,
+            payload: res.data
+        })
+    }).catch(err => console.log(err))
+}
+
+export const addHelperToInstitution = (instId, helperemail) => (dispatch, getState) => {
+    console.log(helperid)
+    axios.post(`api/institution/${instId}/addHelper`, {email: helperemail}, tokenConfig(getState))
+    .then(res => {
+        dispatch({
+            type: ADD_HELPER_TO_INST,
             payload: res.data
         })
     }).catch(err => console.log(err))
