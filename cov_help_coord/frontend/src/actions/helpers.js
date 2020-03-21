@@ -38,3 +38,15 @@ export const addHelper = (helper) => (dispatch, getState) => {
         })
     }).catch(err => dispatch(returnErrors(err.response.data, err.response.status)));
 };
+
+// UPDATE HELPER
+export const updateHelper = (helper) => (dispatch, getState) => {
+    axios.post("/api/helpers/update/", helper, tokenConfig(getState))
+    .then(res => {
+        dispatch(createMessage({ helperAdded: 'Helper added!' }))
+        dispatch({
+            type: UPDATE_HELPER,
+            payload: res.data
+        })
+    }).catch(err => dispatch(returnErrors(err.response.data, err.response.status)));
+};
