@@ -1,0 +1,60 @@
+# version: '3'
+
+# services:
+#   db:
+#     image: postgres
+#     environment:
+#         POSTGRES_HOST_AUTH_METHOD: trust
+#   web:
+#     build: .
+#     command: python manage.py runserver 0.0.0.0:8000
+#     volumes:
+#       - .:/code
+#     ports:
+#       - "8000:8000"
+#     depends_on:
+#       - db
+#     environment:
+#       - POSTGRES_USER=postgres
+#       - POSTGRES_PASSWORD=postgres
+#       - POSTGRES_HOST=db
+#       - POSTGRES_NAME=postgres
+
+version: "3.2"
+services:
+  db:
+    image: postgres
+    environment:
+        POSTGRES_HOST_AUTH_METHOD: trust
+  
+  backend:
+    build: ./backend
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    stdin_open: true
+    tty: true
+    command: python3 manage.py runserver 0.0.0.0:8000
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_HOST=db
+      - POSTGRES_NAME=postgres
+    depends_on:
+      - db
+  
+  frontend:
+    build: ./frontend
+    volumes:
+      - ./frontend:/app
+      # One-way volume to use node_modules from inside image
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - backend
+      - db
+    command: npm start
