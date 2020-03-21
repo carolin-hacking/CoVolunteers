@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getInstitutions, deleteInstitution, addHelperToInstitution } from '../../actions/institutions';
+import Register from '../accounts/RegisterCompany'
 import Popup from "reactjs-popup"
 import Form from './Form'
 
@@ -18,7 +19,8 @@ export class Institutions extends Component {
 
     state = {
         institutionID: null,
-        helper: {}
+        helper: {},
+        isAuthenticated: PropTypes.bool
     }
 
     setid(id) {
@@ -27,9 +29,14 @@ export class Institutions extends Component {
         console.log(this.state.institutionID)
     }
    render() {
+        
         const registerForm = (
-            <tr key="0"></tr>
+            <Register />
         )
+
+        const signupForm = institutionID => {
+            return <Form institutionID={institutionID}/>
+        }
 
         return (
             <Fragment>
@@ -55,9 +62,10 @@ export class Institutions extends Component {
                                 <td>{institution.title}</td>
                                 <td>{institution.description}</td>
                                 <td>
-                                <button onClick={() => this.setid(institution.id)} className="btn btn-success btn-sm">Check</button>
-                                    <Popup trigger={<button onClick={() => this.setid(institution.id)} className="btn btn-success btn-sm"> Anmelden</button>} position="right center">
-                                        <Form id={institution.id}/>
+                                    
+                                    <Popup trigger={<button className="btn btn-success btn-sm"> Anmelden</button>} position="right center">
+                                        {!this.props.isAuthenticated ? registerForm : signupForm(institution.id) }
+                                        
                                     </Popup> 
                                 </td>                           
                             </tr>
@@ -71,7 +79,8 @@ export class Institutions extends Component {
 
 const mapStateToProps = state => ({
     institutions: state.institutions.institutions,
-    institutionID: state.institutions.institutionID
-});
+    institutionID: state.institutions.institutionID,
+    isAuthenticated: state.auth.isAuthenticated
+})
 
 export default connect(mapStateToProps, { getInstitutions, deleteInstitution, addHelperToInstitution })(Institutions);

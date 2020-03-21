@@ -23,9 +23,9 @@ export class Helpers extends Component {
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
-                            <th>Surname</th>
+                            <th>Phone Number</th>
                             <th>Zip Code</th>
-                            <th>Mail Address</th>
+                            <th>Email</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -33,9 +33,9 @@ export class Helpers extends Component {
                             <tr key={helper.id}>
                                 <td>{helper.id}</td>
                                 <td>{helper.name}</td>
-                                <td>{helper.surname}</td> 
+                                <td>{helper.phonenumber}</td> 
                                 <td>{helper.zipcode}</td>
-                                <td>{helper.email}</td>
+                                <td>{helper.user.email}</td>
                                 <td><button onClick={this.props.deleteHelper.bind(this, helper.id)} className="btn btn-danger btn-sm">Delete</button></td>
                             </tr>
                         )) }

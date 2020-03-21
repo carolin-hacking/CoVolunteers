@@ -1,43 +1,45 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { addHelper } from '../../actions/helpers'
+import { addHelper, updateHelper } from '../../actions/helpers'
 import { getInstitutions, deleteInstitution, addInstitution, addHelperToInstitution } from '../../actions/institutions';
 
 
 export class Form extends Component {
     state = {
         name: '',
-        surname: '',
-        zipcode: '',
-        email: ''
+        phonenumber: '',
+        zipcode: ''
     }
 
     static propTypes = {
-        addHelper: PropTypes.func.isRequired,
-        addInstitution: PropTypes.func.isRequired
+        updateHelper: PropTypes.func.isRequired,
+        addInstitution: PropTypes.func.isRequired,
+        institutionID: PropTypes.number.isRequired
     };
 
     onChange = e => this.setState({ [e.target.name]: e.target.value });
 
     onSubmit = e => {
         e.preventDefault();
-        const { name, surname, email, zipcode } = this.state;
-        const helper = { name, surname, email, zipcode };
-        this.props.addHelper(helper);        
-        this.props.addHelperToInstitution(this.props.id, helper.email)
-        this.setState({
+        const { name, phonenumber, zipcode } = this.state;
+        const helper = { name, phonenumber, zipcode };
+        this.props.updateHelper(helper); 
+        //this.props.addHelperToInstitution(this.props.institutionID, helper.email)
+        /*this.setState({
             name: '',
             surname: '',
             email: '',
             zipcode: ''
-        });
+        });*/
         console.log('submit');
     }
 
     render() {
-        const {name, surname, zipcode, email} = this.state;
+        const {name, phonenumber, zipcode} = this.state;
+        console.log(this.props.institutionID)       
         return (
+            
             <div>
                 <div className="card card-body mt-4 mb-4">
                     <h2>Deine Informationen</h2>
@@ -53,35 +55,26 @@ export class Form extends Component {
                         />
                     </div>
                     <div className="form-group">
-                        <label>Surname</label>
-                        <input
-                        className="form-control"
-                        type="text"
-                        name="surname"
-                        onChange={this.onChange}
-                        value={surname}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Email</label>
-                        <input
-                        className="form-control"
-                        type="email"
-                        name="email"
-                        onChange={this.onChange}
-                        value={email}
-                        />
-                    </div>
-                    <div className="form-group">
                         <label>Zip Code</label>
-                        <textarea
-                        className="form-control"
-                        type="text"
-                        name="zipcode"
-                        onChange={this.onChange}
-                        value={zipcode}
+                        <input
+                            className="form-control"
+                            type="text"
+                            name="zipcode"
+                            onChange={this.onChange}
+                            value={zipcode}
                         />
                     </div>
+                    <div className="form-group">
+                        <label>Handynummer</label>
+                        <input
+                            className="form-control"
+                            type="text"
+                            name="phonenumber"
+                            onChange={this.onChange}
+                            value={phonenumber}
+                        />
+                    </div>
+
                     <div className="form-group">
                         <button type="submit" className="btn btn-primary">
                         Submit
@@ -94,8 +87,5 @@ export class Form extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    institutionID: state.institutions.institutionID
-})
 
-export default connect(mapStateToProps, { addHelper, addInstitution, addHelperToInstitution })(Form)
+export default connect(null, { addHelper, addInstitution, addHelperToInstitution, updateHelper })(Form)

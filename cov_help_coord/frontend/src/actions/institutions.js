@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createMessage, returnErrors } from './messages'
 import { tokenConfig } from './auth'
 
-import { GET_INSTITUTIONS, DELETE_INSTITUTION, ADD_INSTITUTION, ADD_HELPER } from './types';
+import { GET_INSTITUTIONS, DELETE_INSTITUTION, ADD_INSTITUTION, ADD_HELPER_TO_INST } from './types';
 
 
 // GET Institutions
@@ -30,7 +30,7 @@ export const deleteInstitution = (id) => (dispatch, getState) => {
 
 // ADD INSTITUTION
 export const addInstitution = (institution) => (dispatch, getState) => {
-    console.log('add institution')
+    console.log(institution)
     axios.post("/api/institutions/", institution, tokenConfig(getState))
     .then(res => {
         dispatch({
@@ -41,7 +41,6 @@ export const addInstitution = (institution) => (dispatch, getState) => {
 }
 
 export const addHelperToInstitution = (instId, helperemail) => (dispatch, getState) => {
-    console.log(helperid)
     axios.post(`api/institution/${instId}/addHelper`, {email: helperemail}, tokenConfig(getState))
     .then(res => {
         dispatch({
