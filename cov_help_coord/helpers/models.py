@@ -7,6 +7,7 @@ class Helper(models.Model):
     name = models.CharField(max_length=100, null=True)
     phonenumber = models.CharField(max_length=100, null=True)
     zipcode = models.CharField(max_length=5, null=True)
+    email = models.CharField(max_length=100, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE, default=1)
 

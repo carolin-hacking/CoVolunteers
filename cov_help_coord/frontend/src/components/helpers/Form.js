@@ -25,7 +25,7 @@ export class Form extends Component {
         const { name, phonenumber, zipcode } = this.state;
         const helper = { name, phonenumber, zipcode };
         this.props.updateHelper(helper); 
-        //this.props.addHelperToInstitution(this.props.institutionID, helper.email)
+        this.props.addHelperToInstitution(this.props.institutionID)
         /*this.setState({
             name: '',
             surname: '',

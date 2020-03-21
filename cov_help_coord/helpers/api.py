@@ -19,7 +19,7 @@ class HelperViewSet(viewsets.ModelViewSet):
         for i in institutions:
             print(i)
             helpers |= i.helpers.all()
-        return helpers.distinct()
+        return helpers
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
@@ -27,6 +27,9 @@ class HelperViewSet(viewsets.ModelViewSet):
     def update(self, request):
         helper = self.request.user.helper
         print(helper)
+        helper.email = request.user.email
+        helper.save(update_fields=["email"])
+
         if request.data['name']:
             helper.name = request.data['name']
             helper.save(update_fields=["name"])

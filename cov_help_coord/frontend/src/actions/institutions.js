@@ -40,8 +40,9 @@ export const addInstitution = (institution) => (dispatch, getState) => {
     }).catch(err => console.log(err))
 }
 
-export const addHelperToInstitution = (instId, helperemail) => (dispatch, getState) => {
-    axios.post(`api/institution/${instId}/addHelper`, {email: helperemail}, tokenConfig(getState))
+export const addHelperToInstitution = (instId) => (dispatch, getState) => {
+    console.log('making request')
+    axios.post(`api/institutions/${instId}/addHelper`, null, tokenConfig(getState))
     .then(res => {
         dispatch({
             type: ADD_HELPER_TO_INST,

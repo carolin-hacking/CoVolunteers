@@ -14,15 +14,12 @@ class InstitutionViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
-    # the company user owns this company 'inserat'
-    #def perform_create(self, serializer):
-     #   serializer.save(owner=self.request.user)
 
     def update(self, request, pk):
-        helper = self.request.user.helper
-        helper_email = request.data['email']
-        helper = Helper.objects.filter(email=helper_email)
-        self.get_object().helpers.add(helper[0].id)
+        
+        helperid = request.user.helper.id
+        print(helperid)
+        self.get_object().helpers.add(helperid)
         serializer = self.serializer_class(self.get_object())
         return Response(serializer.data)
     

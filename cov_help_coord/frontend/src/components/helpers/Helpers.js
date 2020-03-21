@@ -14,6 +14,10 @@ export class Helpers extends Component {
         this.props.getHelpers();
     }
 
+    isNotDummyHelper(helper) {
+        return helper.id !== 1
+    }
+
     render() {
         return (
             <Fragment>
@@ -21,22 +25,19 @@ export class Helpers extends Component {
                 <table className="table table-striped">
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Name</th>
-                            <th>Phone Number</th>
                             <th>Zip Code</th>
                             <th>Email</th>
+                            <th>Phone Number</th>
                         </tr>
                     </thead>
                     <tbody>
-                        { this.props.helpers.map(helper => (
+                        { this.props.helpers.filter(this.isNotDummyHelper).map(helper => (
                             <tr key={helper.id}>
-                                <td>{helper.id}</td>
                                 <td>{helper.name}</td>
-                                <td>{helper.phonenumber}</td> 
                                 <td>{helper.zipcode}</td>
-                                <td>{helper.user.email}</td>
-                                <td><button onClick={this.props.deleteHelper.bind(this, helper.id)} className="btn btn-danger btn-sm">Delete</button></td>
+                                <td>{helper.email}</td>
+                                <td>{helper.phonenumber}</td>                                 
                             </tr>
                         )) }
                     </tbody>

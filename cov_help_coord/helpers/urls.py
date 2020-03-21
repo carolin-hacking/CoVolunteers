@@ -7,7 +7,7 @@ helper_update = HelperViewSet.as_view({
 })
 
 urlpatterns = [
-    path('api/helpers/', HelperViewSet.as_view({'get': 'list', 'post': 'create'}), name='helpers'), 
+    path('api/helpers/', HelperViewSet.as_view({'get': 'list', 'post': 'create', 'delete': 'destroy'}), name='helpers'), 
     path('api/helpers/update/', helper_update,  name='helper_update')
     ]
 

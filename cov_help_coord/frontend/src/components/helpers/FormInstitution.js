@@ -35,7 +35,7 @@ export class FormInstitution extends Component {
     onSubmit = e => {
         e.preventDefault();
         const { companyname, ansprechpartner, zipcode, companytype, title, description } = this.state;
-        const helpers = [""]
+        const helpers = [1]
         const institution = { companyname, ansprechpartner, zipcode, companytype, title, description, helpers };
         console.log(institution)
         this.props.addInstitution(institution);

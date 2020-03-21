@@ -10,4 +10,6 @@ inst_update = InstitutionViewSet.as_view({
 #router.register('api/institutions', InstitutionViewSet, 'institutions')
 urlpatterns = [
     path('api/institutions/', InstitutionViewSet.as_view({'get': 'list', 'post': 'create'}), name='institutions'), 
-    path('api/institution/<int:pk>/addHelper', inst_update,  name='inst_update')]
+    path('api/institutions/<int:pk>/addHelper', inst_update,  name='inst_update')]
+
+    
