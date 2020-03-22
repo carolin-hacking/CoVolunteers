@@ -21,7 +21,7 @@ export class Helpers extends Component {
     render() {
         return (
             <Fragment>
-                <h2>Helpers</h2>
+                <h2 className='ml-3'>Interessierte Helfer</h2>
                 <table className="table table-striped">
                     <thead>
                         <tr>

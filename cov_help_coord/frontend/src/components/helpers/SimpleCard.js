@@ -8,6 +8,10 @@ import Typography from '@material-ui/core/Typography';
 import Popup from "reactjs-popup"
 import Register from '../accounts/RegisterCompany'
 import PropTypes from 'prop-types';
+import Form from './Form'
+
+import { connect } from 'react-redux';
+import { getInstitutions, deleteInstitution, addHelperToInstitution } from '../../actions/institutions';
 
 
 
@@ -28,7 +32,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default class SimpleCard extends Component {
+class SimpleCard extends Component {
 
   static propTypes = {
     institutions: PropTypes.array.isRequired,
@@ -60,45 +64,56 @@ export default class SimpleCard extends Component {
     console.log(this.props.institution)
     return (
       <Card>
-        <CardContent>
-        <Typography variant="h5">
-        {institution.companyname}        
-        </Typography>
-        </CardContent>
-        <CardContent>
-          <Typography variant="h5">
-        {institution.companyname}
-        </Typography>
-        </CardContent>
-        <CardContent>
-          <Typography variant="h5">
-        {institution.ansprechpartner}
-        </Typography>
-        </CardContent>
-        <CardContent>
-          <Typography variant="h5">
-        {institution.zipcode} 
-        </Typography>
-        </CardContent>
-        <CardContent>
-          <Typography variant="h5">
-        {institution.companytype}
-        </Typography>
-        </CardContent>
-        <CardContent>
-          <Typography variant="h5">
-        {institution.title}
-        </Typography>
-        </CardContent>
-        <CardContent>
-          <Typography variant="h5">
-        {institution.description}
-        </Typography>
-        </CardContent>
-        <Popup trigger={<button className="btn btn-success btn-sm"> Anmelden</button>} position="right center">
-          {!this.props.isAuthenticated ? registerForm : signupForm(institution.id) }
-        </Popup> 
-      </Card>
+          <CardContent>
+            <Typography variant="h4" className="text-primary">
+              {institution.title}
+            </Typography>
+          </CardContent>
+          <CardContent>
+            <Typography variant="subtitle">
+              {institution.companyname} ({institution.companytype}),{" "}
+              {institution.zipcode}
+            </Typography>
+          </CardContent>
+          <CardContent>
+            <Typography variant="h6" align="center">
+              Bezahlt
+            </Typography>
+          </CardContent>
+
+          <CardContent>
+            <Typography variant="subtitle">
+              {institution.description}
+            </Typography>
+          </CardContent>
+
+          <Popup
+            trigger={
+              <div class="col text-center">
+                <button
+                className="btn mb-2  btn-sm btn-primary"
+                justifyContent="center"
+              >
+                {" "}
+                Anmelden
+              </button>
+              </div>
+            }
+            position="right center"
+          >
+            {!this.props.isAuthenticated
+              ? registerForm
+              : signupForm(institution.id)}
+          </Popup>
+        </Card>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  institutionID: state.institutions.institutionID,
+  isAuthenticated: state.auth.isAuthenticated
+})
+
+
+export default connect(mapStateToProps)(SimpleCard)

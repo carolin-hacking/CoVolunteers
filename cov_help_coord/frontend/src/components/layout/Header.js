@@ -25,7 +25,7 @@ export class Header extends Component {
                     </strong>
                 </span>
                 <li className="nav-item">
-                    <button onClick={this.props.logout} className="nav-link btn btn-info btn-sm text-light">Logout</button>
+                    <button onClick={this.props.logout} className="nav-link btn btn-primary btn-sm text-light">Logout</button>
                 </li>
             </ul> 
 );
@@ -42,7 +42,7 @@ export class Header extends Component {
         )
 
         return (
-            <nav className="navbar navbar-expand-sm navbar-light bg-light">
+            <nav className="navbar navbar-expand-sm  bg-light">
             <div className="container">
               <button
                 className="navbar-toggler"
@@ -56,15 +56,19 @@ export class Header extends Component {
                 <span className="navbar-toggler-icon" />
               </button>
               <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-                <a className="navbar-brand" href="#">
+                <a className="navbar-brand text-primary" href="#">
                   Finde Dein Engagement oder Job!
                 </a>
+                <ul className="navbar-nav">
                 <li class="nav-item">
-                    <Link to='/fuerhelfer'>Für Helfer</Link>
+                <a class="nav-item nav-link text-primary" href="/#/fuerhelfer">Für Helfer</a>
                 </li>
-                <li class="nav-item">
-                    <Link to='/fuereinrichtungen'>Für Einrichtungen</Link>
+                </ul>
+                <ul className="navbar-nav">
+                <li class="nav-item">                    
+                <a class="nav-item nav-link text-primary" href="/#/fuereinrichtungen">Für Einrichtungen</a>
                 </li>
+                </ul>
               </div>
               {isAuthenticated ? authLinks : guestLinks}
             </div>

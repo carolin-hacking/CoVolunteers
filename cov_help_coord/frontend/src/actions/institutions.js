@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createMessage, returnErrors } from './messages'
 import { tokenConfig } from './auth'
 
-import { GET_INSTITUTIONS, DELETE_INSTITUTION, ADD_INSTITUTION, ADD_HELPER } from './types';
+import { GET_INSTITUTIONS, DELETE_INSTITUTION, ADD_INSTITUTION, ADD_HELPER_TO_INST } from './types';
 
 
 // GET Institutions

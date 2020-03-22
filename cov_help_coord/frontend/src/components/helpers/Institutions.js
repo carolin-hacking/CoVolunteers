@@ -34,7 +34,10 @@ export class Institutions extends Component {
 
         return (
             <Fragment>
-                <Typography variant="h4"> 27 Möglichkeiten zu helfen in Deiner Nähe</Typography>
+                <div>
+
+                </div>
+                <Typography variant="h4" className="mt-5 mb-5 text-info"> 27 Möglichkeiten zu helfen in Deiner Nähe</Typography>
                 <Grid institutions={this.props.institutions}/>    
             </Fragment>
         )

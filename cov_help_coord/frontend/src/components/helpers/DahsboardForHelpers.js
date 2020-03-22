@@ -2,9 +2,9 @@ import React, { Component, Fragment } from 'react'
 import Form from './Form'
 import Institutions from './Institutions'
 import { connect } from 'react-redux';
-import { CardMedia } from '@material-ui/core';
+import { CardMedia, Typography } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
-
+import Select from 'react-select';
 
 
 var sectionStyle = {
@@ -17,7 +17,25 @@ export class DahsboardForHelpers extends Component {
         return (
             <div style={sectionStyle}>
                 <Fragment>
-                    <Institutions />
+                <div className='row ml-2'>
+                    <div>
+                        <Typography variant="h5" className="mt-4 text-secondary">Postleitzahl</Typography>
+                        <input className="mt-2 form-control" />
+                    </div>
+                    <div className="ml-5 ">
+                        <Typography variant="h5" className="mt-4 text-secondary">Art der Einrichtung</Typography>
+                        <Select className="mt-2"
+                            name="companytype"
+                            />
+                    </div>
+                    <div className="ml-5 ">
+                        <Typography variant="h5" className="mt-4 text-secondary">Vorerfahrung</Typography>
+                        <Select className="mt-2"
+                            name="companytype"
+                            />
+                    </div>
+                </div>
+                <Institutions />
                 </Fragment>    
                 </div>    
         )

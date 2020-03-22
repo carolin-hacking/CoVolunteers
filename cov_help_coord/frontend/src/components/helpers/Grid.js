@@ -4,8 +4,10 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import SimpleCard from './SimpleCard'
 
+import { connect } from 'react-redux';
 
-export default class CenteredGrid extends Component {
+
+class CenteredGrid extends Component {
   
   render() {
     const institutions = this.props.institutions
@@ -23,3 +25,5 @@ export default class CenteredGrid extends Component {
   );
 }
 }
+
+export default connect()(CenteredGrid)

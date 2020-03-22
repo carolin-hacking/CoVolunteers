@@ -14,11 +14,11 @@ class HelperViewSet(viewsets.ModelViewSet):
     #queryset = Helper.objects.all()
     def get_queryset(self):
         institutions = self.request.user.institutions.all()
-        print(institutions)
         helpers = Helper.objects.none()
         for i in institutions:
             print(i)
             helpers |= i.helpers.all()
+            print(helpers)
         return helpers
 
     def perform_create(self, serializer):
