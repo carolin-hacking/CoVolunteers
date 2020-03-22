@@ -2,12 +2,14 @@ import axios from 'axios';
 import { createMessage, returnErrors } from './messages'
 import { tokenConfig } from './auth'
 
+axios.default.baseURL = "http://0.0.0.0:8000"
+
 import { GET_INSTITUTIONS, DELETE_INSTITUTION, ADD_INSTITUTION, ADD_HELPER } from './types';
 
 
 // GET Institutions
 export const getInstitutions = () => (dispatch, getState) => {
-    axios.get('/api/institutions/', tokenConfig(getState))
+    axios.get('http://backend:8000/api/institutions/', tokenConfig(getState))
     .then(res => {
         dispatch({
             type: GET_INSTITUTIONS,

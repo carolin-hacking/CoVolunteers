@@ -1,6 +1,8 @@
 # Use an official Python runtime as a parent image
-FROM python:3.6
+FROM python:3.8.0
 
+# set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 # Adding backend directory to make absolute filepaths consistent across services

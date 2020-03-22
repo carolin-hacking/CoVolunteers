@@ -1,8 +1,9 @@
-import axios from 'axios';
 import { returnErrors } from './messages';
+import axios from 'axios'
 
 import { USER_LOADED, USER_LOADING, AUTH_ERROR, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT_SUCCESS, REGISTER_FAIL, REGISTER_SUCCESS } from './types';
-import Axios from 'axios';
+
+axios.default.baseURL = "http://0.0.0.0:8000"
 
 // CHECK TOKEN & LOAD USER
 export const loadUser = () => (dispatch, getState) => {
@@ -81,7 +82,7 @@ export const register = ({ username, password, email}) => (dispatch) => {
 // LOGOUT USER
 export const logout = () => (dispatch, getState) => {
 
-    Axios.post('/api/auth/logout', null, tokenConfig(getState))
+    axios.post('/api/auth/logout', null, tokenConfig(getState))
     .then(res => {
         dispatch({
             type: LOGOUT_SUCCESS

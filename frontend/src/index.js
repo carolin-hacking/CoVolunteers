@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 
 import App from './components/App';
 
-const title = 'My Minimal React Webpack Babel Setup';
+
+const title = 'Helper Registration';
 
 ReactDOM.render(
   <App title={title} />,
