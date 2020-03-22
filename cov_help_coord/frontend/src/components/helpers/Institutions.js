@@ -5,6 +5,8 @@ import { getInstitutions, deleteInstitution, addHelperToInstitution } from '../.
 import Register from '../accounts/RegisterCompany'
 import Popup from "reactjs-popup"
 import Form from './Form'
+import Grid from './Grid'
+import Typography from '@material-ui/core/Typography';
 
 export class Institutions extends Component {
     static propTypes = {
@@ -29,49 +31,11 @@ export class Institutions extends Component {
         console.log(this.state.institutionID)
     }
    render() {
-        
-        const registerForm = (
-            <Register />
-        )
-
-        const signupForm = institutionID => {
-            return <Form institutionID={institutionID}/>
-        }
 
         return (
             <Fragment>
-                <h2>Einrichtungen</h2>
-                <table className="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Einrichtung</th>
-                            <th>Ansprechpartner</th>
-                            <th>PLZ</th>
-                            <th>Einrichtungsart</th>
-                            <th>Sucht</th>
-                            <th>Beschreibung</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        { this.props.institutions.map(institution => (
-                            <tr key={institution.id}>
-                                <td>{institution.companyname}</td>
-                                <td>{institution.ansprechpartner}</td>
-                                <td>{institution.zipcode}</td> 
-                                <td>{institution.companytype}</td>
-                                <td>{institution.title}</td>
-                                <td>{institution.description}</td>
-                                <td>
-                                    
-                                    <Popup trigger={<button className="btn btn-success btn-sm"> Anmelden</button>} position="right center">
-                                        {!this.props.isAuthenticated ? registerForm : signupForm(institution.id) }
-                                        
-                                    </Popup> 
-                                </td>                           
-                            </tr>
-                        )) }
-                    </tbody>
-                </table>
+                <Typography variant="h4"> 27 Möglichkeiten zu helfen in Deiner Nähe</Typography>
+                <Grid institutions={this.props.institutions}/>    
             </Fragment>
         )
     }
