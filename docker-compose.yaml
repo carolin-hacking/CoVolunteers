@@ -6,9 +6,9 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=db
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_PASSWORD}
   
   backend:
     build: ./backend
@@ -22,31 +22,33 @@ services:
     tty: true
     command: python3 manage.py runserver 0.0.0.0:8000
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_HOST=db
-      - POSTGRES_NAME=postgres
-      - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
-      - SECRET_KEY=foo
-      - DEBUG=1
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_HOST=${POSTGRES_HOST}
+      - POSTGRES_NAME=${POSTGRES_NAME}
+      - DJANGO_ALLOWED_HOSTS=${DJANGO_ALLOWED_HOSTS}
+      - SECRET_KEY=${SECRET_KEY}
+      - DEBUG=${DEBUG}
     depends_on:
       - db
+    container_name: backend
   
-  frontend:
-    build: ./frontend
-    ports:
-      - "${REACT_APP_PORT}:${REACT_APP_PORT}"
-    environment:
-      - NODE_ENV=development
-      - REACT_APP_PORT=${REACT_APP_PORT}
-    expose:
-      - ${REACT_APP_PORT}
-    depends_on:
-      - backend
-      - db
-    command: npm start
-    links:
-      - backend
+  # frontend:
+  #   build: ./frontend
+  #   ports:
+  #     - "${REACT_APP_PORT}:${REACT_APP_PORT}"
+  #   environment:
+  #     - NODE_ENV=${DEBUG}
+  #     - REACT_APP_PORT=${REACT_APP_PORT}
+  #     - TARGET=${TARGET}
+  #   expose:
+  #     - ${REACT_APP_PORT}
+  #   depends_on:
+  #     - backend
+  #     - db
+  #   command: npm start
+  #   links:
+  #     - backend
 
 volumes:
   postgres_data:

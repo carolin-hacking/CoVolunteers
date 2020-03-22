@@ -1,8 +1,9 @@
-import axios from 'axios';
+import axios from './axios/index.js';
 import { createMessage, returnErrors } from './messages'
 import { tokenConfig } from './auth'
 
 import { GET_HELPERS, DELETE_HELPER, ADD_HELPER } from './types';
+
 
 // GET HELPERS
 export const getHelpers = () => (dispatch, getState) => {

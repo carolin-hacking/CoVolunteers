@@ -1,9 +1,9 @@
 import { returnErrors } from './messages';
-import axios from 'axios'
+import axios from './axios/index.js';
 
 import { USER_LOADED, USER_LOADING, AUTH_ERROR, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT_SUCCESS, REGISTER_FAIL, REGISTER_SUCCESS } from './types';
 
-axios.default.baseURL = "http://0.0.0.0:8000"
+
 
 // CHECK TOKEN & LOAD USER
 export const loadUser = () => (dispatch, getState) => {
@@ -26,7 +26,6 @@ export const loadUser = () => (dispatch, getState) => {
 
 // LOGIN USER
 export const login = (username, password) => (dispatch) => {
-    
     // Headers
     const config = {
         headers: {
