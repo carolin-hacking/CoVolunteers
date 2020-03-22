@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "/home/carolin/.local/share/virtualenvs/cov-help-coord-_QjU_Srr/bin/python"
+    "python.pythonPath": "/home/carolin/.local/share/virtualenvs/cov-help-coord-_QjU_Srr/bin/python",
+    "git.ignoreLimitWarning": true
 }
