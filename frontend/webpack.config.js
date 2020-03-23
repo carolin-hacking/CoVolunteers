@@ -51,6 +51,8 @@ module.exports = {
       const port = server.listeningApp.address().port;
       console.log('Listening on port:', port);
     },
-    disableHostCheck: true
+    headers: {
+      'Access-Control-Allow-Origin': '*'
+    }
   }
 };
