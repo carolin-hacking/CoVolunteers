@@ -48,6 +48,13 @@ services:
     command: npm start
     links:
       - backend
+    entrypoint:
+      - backend
+      - -Ehttp.port=8000
+      - -Ehttp.cors.enabled=true
+      - -Ehttp.cors.allow-origin=xxx
+      - -Ehttp.cors.allow-headers=Content-Type,Content-Length,Authorization
+      - -Ehttp.cors.allow-credentials=true
 
 volumes:
   postgres_data:
