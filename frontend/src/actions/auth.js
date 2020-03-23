@@ -35,7 +35,7 @@ export const login = (username, password) => (dispatch) => {
 
     // Request Body
     const body = JSON.stringify({ username, password});
-    console.log('making login request');
+    console.log(`Target env variable: ${process.env.TARGET}`);
     axios.post('/api/auth/login', body, config)
     .then(res => {
         dispatch({

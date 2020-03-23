@@ -1,7 +1,11 @@
 const webpack = require('webpack');
+const Dotenv = require('dotenv-webpack')
 
 module.exports = {
   entry: './src/index.js',
+  node: {
+    fs: 'empty'
+  },
   module: {
     rules: [
       {
@@ -34,7 +38,11 @@ module.exports = {
     filename: 'bundle.js'
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new Dotenv({
+      path: './.env', // Path to .env file (this is the default)
+      safe: true // load .env.example (defaults to "false" which does not use dotenv-safe)
+    })
   ],
   devServer: {
     contentBase: './dist',
