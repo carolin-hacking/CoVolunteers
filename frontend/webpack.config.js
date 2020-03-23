@@ -53,8 +53,8 @@ module.exports = {
     },
     proxy: {
       '/api': {
-        target: 'http://54.175.210.240:8000',
-        secure: false,
+        target: '0.0.0.0:8000',
+        secure: false
       },
     },
     hot: true,
