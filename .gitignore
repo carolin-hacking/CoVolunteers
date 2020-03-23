@@ -2,7 +2,9 @@
 # Edit at https://www.gitignore.io/?templates=django
 cov_help_coord/frontend/static/frontend/main.js
 node_modules/*
+
 ### Django ###
+*djangocov*
 *.log
 *.pot
 *.pyc

@@ -1,4 +1,4 @@
-#!/home/carolin/cov-helper-app/cov-help-coord/cov_help_coord/djangocov/bin/python3
+#!/home/carolin/cov-helper-app/cov-help-coord/cov_help_coord/djangocov/bin/python
 from django.core import management
 
 if __name__ == "__main__":
