@@ -51,6 +51,12 @@ module.exports = {
       "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization",
       "Access-Control-Allow-Origin": "*"
     },
+    proxy: {
+      '/api': {
+        target: 'http://54.175.210.240:8000',
+        secure: false,
+      },
+    },
     hot: true,
     onListening: function(server) {
       const port = server.listeningApp.address().port;
