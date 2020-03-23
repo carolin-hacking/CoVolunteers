@@ -36,9 +36,9 @@ services:
   frontend:
     build: ./frontend
     ports:
-      - "${FRONTEND_PORT}:${FRONTEND_PORT}"
+      - "${ALTERNATIVE_PORT}:${FRONTEND_PORT}"
     expose:
-      - ${FRONTEND_PORT}
+      - ${ALTERNATIVE_PORT}
     environment:
       - NODE_ENV=${DEBUG}
       - TARGET=${TARGET}
