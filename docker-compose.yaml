@@ -15,9 +15,9 @@ services:
     volumes:
       - .:/code
     ports:
-      - "${APP_SERVER_PORT}:${APP_SERVER_PORT}"
+      - "${BACKEND_PORT}:${BACKEND_PORT}"
     expose:
-      - ${APP_SERVER_PORT}
+      - ${BACKEND_PORT}
     stdin_open: true
     tty: true
     command: python3 manage.py runserver 0.0.0.0:8000
@@ -33,22 +33,21 @@ services:
       - db
     container_name: backend
   
-  # frontend:
-  #   build: ./frontend
-  #   ports:
-  #     - "${REACT_APP_PORT}:${REACT_APP_PORT}"
-  #   environment:
-  #     - NODE_ENV=${DEBUG}
-  #     - REACT_APP_PORT=${REACT_APP_PORT}
-  #     - TARGET=${TARGET}
-  #   expose:
-  #     - ${REACT_APP_PORT}
-  #   depends_on:
-  #     - backend
-  #     - db
-  #   command: npm start
-  #   links:
-  #     - backend
+  frontend:
+    build: ./frontend
+    ports:
+      - "${FRONTEND_PORT}:${FRONTEND_PORT}"
+    expose:
+      - ${FRONTEND_PORT}
+    environment:
+      - NODE_ENV=${DEBUG}
+      - TARGET=${TARGET}
+    depends_on:
+      - backend
+      - db
+    command: npm start
+    links:
+      - backend
 
 volumes:
   postgres_data:
