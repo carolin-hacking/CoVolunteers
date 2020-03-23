@@ -4,7 +4,7 @@ const Dotenv = require('dotenv-webpack')
 module.exports = {
   entry: [
     './src/index.js',
-    "webpack-dev-server/client?http:54.175.210.240:80",
+    "webpack-dev-server/client?http://54.175.210.240:80",
     "webpack/hot/only-dev-server",
   ],
   node: {
