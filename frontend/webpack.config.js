@@ -52,7 +52,7 @@ module.exports = {
       "Access-Control-Allow-Origin": "*"
     },
     proxy: {
-      '/api': {
+      '/api/**': {
         target: '0.0.0.0:8000',
         secure: false,
         pathRewrite: { '^/api': '' },
