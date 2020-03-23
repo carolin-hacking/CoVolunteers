@@ -1,4 +1,4 @@
-import { GET_INSTITUTIONS, DELETE_INSTITUTION, ADD_INSTITUTION } from '../actions/types.js'
+import { GET_INSTITUTIONS, DELETE_INSTITUTION, ADD_INSTITUTION, ADD_HELPER_TO_INST } from '../actions/types.js'
 
 const initialState = {
     institutions: []
@@ -22,6 +22,11 @@ export default function(state = initialState, action) {
                 ...state,
                 institutions: state.institutions.filter(institution => institution.id !== action.payload)
             };
+        case ADD_HELPER_TO_INST:
+            return {
+                ...state,
+                institutions: [...state.institutions.filter(institution => institution.id !== action.payload.id), action.payload]
+            }
         default: 
             return state;
     }

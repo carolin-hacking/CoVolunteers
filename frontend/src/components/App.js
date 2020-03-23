@@ -41,7 +41,7 @@ class App extends Component {
                             <div className="container">
                                 <Switch>
                                 
-                                    
+                                <Route exact path="/" component={DashboardForHelpers} />        
                                 <Route exact path="/fuerhelfer" component={DashboardForHelpers} />
                                 <PrivateRoute exact path="/fuereinrichtungen" component={DashboardForInstitution} />
                                    

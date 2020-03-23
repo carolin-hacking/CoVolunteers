@@ -1,7 +1,12 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getInstitutions, deleteInstitution } from '../../actions/institutions';
+import { getInstitutions, deleteInstitution, addHelperToInstitution } from '../../actions/institutions';
+import Register from '../accounts/RegisterCompany'
+import Popup from "reactjs-popup"
+import Form from './Form'
+import Grid from './Grid'
+import Typography from '@material-ui/core/Typography';
 
 export class Institutions extends Component {
     static propTypes = {
@@ -13,43 +18,36 @@ export class Institutions extends Component {
     componentDidMount() {
         this.props.getInstitutions();
     }
-//{ companyname, ansprechpartner, zipcode, companytype, title, description 
-    render() {
+
+    state = {
+        institutionID: null,
+        helper: {},
+        isAuthenticated: PropTypes.bool
+    }
+
+    setid(id) {
+        console.log(id)
+        this.setState({institutionID: id})
+        console.log(this.state.institutionID)
+    }
+   render() {
+
         return (
             <Fragment>
-                <h2>Einrichtungen</h2>
-                <table className="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Einrichtung</th>
-                            <th>Ansprechpartner</th>
-                            <th>PLZ</th>
-                            <th>Einrichtungsart</th>
-                            <th>Sucht</th>
-                            <th>Beschreibung</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        { this.props.institutions.map(institution => (
-                            <tr key={institution.id}>
-                                <td>{institution.companyname}</td>
-                                <td>{institution.ansprechpartner}</td>
-                                <td>{institution.zipcode}</td> 
-                                <td>{institution.companytype}</td>
-                                <td>{institution.title}</td>
-                                <td>{institution.description}</td>
-                                <td><button className="btn btn-success btn-sm">Anmelden</button></td>
-                            </tr>
-                        )) }
-                    </tbody>
-                </table>
+                <div>
+
+                </div>
+                <Typography variant="h4" className="mt-5 mb-5 text-info"> 27 Möglichkeiten zu helfen in Deiner Nähe</Typography>
+                <Grid institutions={this.props.institutions}/>    
             </Fragment>
         )
     }
 }
 
 const mapStateToProps = state => ({
-    institutions: state.institutions.institutions
-});
+    institutions: state.institutions.institutions,
+    institutionID: state.institutions.institutionID,
+    isAuthenticated: state.auth.isAuthenticated
+})
 
-export default connect(mapStateToProps, { getInstitutions, deleteInstitution })(Institutions);
+export default connect(mapStateToProps, { getInstitutions, deleteInstitution, addHelperToInstitution })(Institutions);

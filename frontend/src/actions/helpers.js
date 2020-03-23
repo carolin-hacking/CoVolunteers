@@ -2,7 +2,7 @@ import axios from './axios/index.js';
 import { createMessage, returnErrors } from './messages'
 import { tokenConfig } from './auth'
 
-import { GET_HELPERS, DELETE_HELPER, ADD_HELPER } from './types';
+import { GET_HELPERS, DELETE_HELPER, ADD_HELPER, UPDATE_HELPER } from './types';
 
 
 // GET HELPERS
@@ -35,6 +35,19 @@ export const addHelper = (helper) => (dispatch, getState) => {
         dispatch(createMessage({ helperAdded: 'Helper added!' }))
         dispatch({
             type: ADD_HELPER,
+            payload: res.data
+        })
+    }).catch(err => dispatch(returnErrors(err.response.data, err.response.status)));
+};
+
+
+// UPDATE HELPER
+export const updateHelper = (helper) => (dispatch, getState) => {
+    axios.post("/api/helpers/update/", helper, tokenConfig(getState))
+    .then(res => {
+        dispatch(createMessage({ helperAdded: 'Helper added!' }))
+        dispatch({
+            type: UPDATE_HELPER,
             payload: res.data
         })
     }).catch(err => dispatch(returnErrors(err.response.data, err.response.status)));
