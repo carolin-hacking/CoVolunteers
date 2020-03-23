@@ -56,7 +56,7 @@ CORS_ORIGIN_WHITELIST = [
     'http://54.175.210.240:80'
 ]
 
-CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
