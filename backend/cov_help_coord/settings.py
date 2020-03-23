@@ -55,6 +55,7 @@ CORS_ORIGIN_WHITELIST = [
     'http://0.0.0.0:8080',
     'http://0.0.0.0:80',
     'http://3.90.15.215:8080',
+    'http://3.90.15.215:80'
 ]
 
 MIDDLEWARE = [
