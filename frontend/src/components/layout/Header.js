@@ -42,37 +42,37 @@ export class Header extends Component {
         )
 
         return (
-            <nav className="navbar navbar-expand-sm  bg-light">
-            <div className="container">
-              <button
-                className="navbar-toggler"
-                type="button"
-                data-toggle="collapse"
-                data-target="#navbarTogglerDemo01"
-                aria-controls="navbarTogglerDemo01"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-              >
-                <span className="navbar-toggler-icon" />
-              </button>
-              <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-                <a className="navbar-brand text-primary" href="#">
-                  Finde Dein Engagement oder Job!
-                </a>
-                <ul className="navbar-nav">
-                <li class="nav-item">
-                <a class="nav-item nav-link text-primary" href="/#/fuerhelfer">Für Helfer</a>
-                </li>
-                </ul>
-                <ul className="navbar-nav">
-                <li class="nav-item">                    
-                <a class="nav-item nav-link text-primary" href="/#/fuereinrichtungen">Für Einrichtungen</a>
-                </li>
-                </ul>
-              </div>
-              {isAuthenticated ? authLinks : guestLinks}
+          <nav className="navbar navbar-expand-sm  bg-light">
+          <div className="container">
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarTogglerDemo01"
+              aria-controls="navbarTogglerDemo01"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon" />
+            </button>
+            <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
+              <a className="navbar-brand text-primary" href="#">
+                Finde Dein Engagement oder Job!
+              </a>
+              <ul className="navbar-nav">
+              <li class="nav-item">
+              <a class="nav-item nav-link text-primary" href="/#/fuerhelfer">Für Helfer</a>
+              </li>
+              </ul>
+              <ul className="navbar-nav">
+              <li class="nav-item">                    
+              <a class="nav-item nav-link text-primary" href="/#/fuereinrichtungen">Für Einrichtungen</a>
+              </li>
+              </ul>
             </div>
-          </nav>
+            {isAuthenticated ? authLinks : guestLinks}
+          </div>
+        </nav>
         );
     }
 }
