@@ -52,7 +52,8 @@ REST_FRAMEWORK = {
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:8081',
     'http://localhost:8080',
-    'http://backend:8000'
+    'http://localhost:80',
+    'http://54.175.210.240:80'
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
