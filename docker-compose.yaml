@@ -14,7 +14,7 @@ services:
     build: ./backend
     volumes:
       - .:/code
-    ports:https://www.zeit.de/index
+    ports:
       - "${BACKEND_PORT}:${BACKEND_PORT}"
     expose:
       - ${BACKEND_PORT}
