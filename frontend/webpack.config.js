@@ -2,7 +2,11 @@ const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack')
 
 module.exports = {
-  entry: './src/index.js',
+  entry: [
+    './src/index.js',
+    "webpack-dev-server/client?http://127.0.0.1:8080",
+    "webpack/hot/only-dev-server",
+  ],
   node: {
     fs: 'empty'
   },
