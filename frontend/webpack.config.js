@@ -55,7 +55,8 @@ module.exports = {
       '/api': {
         target: '0.0.0.0:8000',
         secure: false,
-        pathRewrite: { '^/api': '' }
+        pathRewrite: { '^/api': '' },
+        changeOrigin: true
       },
     },
     hot: true,
