@@ -64,6 +64,7 @@ module.exports = {
         changeOrigin: true
       },
     },
+    hot: true,
     onListening: function(server) {
       const port = server.listeningApp.address().port;
       console.log('Listening on port:', port);
