@@ -4,9 +4,8 @@ I implemented this project as part of the WirVsVirus Hackathon (https://wirvsvir
 
 It allows institutions to post their openings for volunteers or workers and lets interested people apply for the posting.
 
-![Helper Registration](https://github.com/CHeckingV/CoVolunteers/blob/master/screenshots/helper_view.png=200x)
-![Institution Registration](https://github.com/CHeckingV/CoVolunteers/blob/master/screenshots/institution_view.png200x)
-
+<img src="https://github.com/CHeckingV/CoVolunteers/blob/master/screenshots/institution_view.png" width="400">
+<img src="https://github.com/CHeckingV/CoVolunteers/blob/master/screenshots/helper_view.png" width="400">
 
 ## Video 
 (German) https://www.youtube.com/watch?app=desktop&v=dQdFfzkr4mU
